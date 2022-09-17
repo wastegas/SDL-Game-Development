@@ -1,0 +1,8 @@
+bin_PROGRAMS = hello
+hello_SOURCES = \
+	main.cpp
+
+
+hello_CPPFLAGS = $(SDL2_CFLAGS) $(SDL2_TTF_CFLAGS)
+hello_LDFLAGS = $(SDL2_LIBS) $(SDL2_IMAGE_LIBS) $(SDL2_TTF_LIBS)
+hello_LDADD = $(SDL2_LIBS) $(SDL2_IMAGE_LIBS) $(SDL2_TTF_LIBS)
