@@ -4,38 +4,41 @@
 
 SDL_Window*   g_pWindow = 0;
 SDL_Renderer* g_pRenderer = 0;
+bool g_bRunning = false;
 
-int main(int argc, char **argv)
+bool init(const char* title, int xpos, int ypos, int height, int width,
+	  int flags)
 {
   // Initialize SDL
   if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
     {
       // Init succeeded create window
-      g_pWindow = SDL_CreateWindow(PACKAGE_STRING,
-				   SDL_WINDOWPOS_CENTERED,
-				   SDL_WINDOWPOS_CENTERED,
-				   640, 480,
-				   SDL_WINDOW_SHOWN);
+      g_pWindow = SDL_CreateWindow(title,
+				   xpos,
+				   ypos,
+				   height, width,
+				   flags);
       // Window created, create renderer
       if (g_pWindow != 0)
 	{
-	  std::cout << "window created" << std::endl;
 	  g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);
 	}
       else
 	{
-	  return -1;
+	  return false;
 	}
-      std::cout << "renderer created" << std::endl;
     }
   else
     {
-      return -1; // something went wrong
+      return false; // something went wrong
     }
+  return true;
+}
 
-  // everything okay draw window
 
-  // set black background
+void render()
+{
+  // set to black
   SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
 
   // clear the window
@@ -44,9 +47,22 @@ int main(int argc, char **argv)
   std::cout << "drawing window" << std::endl;
   // Show the window
   SDL_RenderPresent(g_pRenderer);
+}  
+
+int main(int argc, char **argv)
+{
+  if(init(PACKAGE_STRING, SDL_WINDOWPOS_CENTERED,
+	  SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN))
+    {
+      g_bRunning = true;
+    }
+  else
+    {
+      return -1;
+    }
 
   // delay before quitting
-  SDL_Delay(5000);
+  //  SDL_Delay(5000);
 
   // clean up SDL
   SDL_Quit();
