@@ -1,5 +1,6 @@
 bin_PROGRAMS = hello
 hello_SOURCES = \
+	game.cpp \
 	main.cpp
 
 
