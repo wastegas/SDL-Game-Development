@@ -1,1 +1,1 @@
-pkgdata_DATA = animate.bmp
+pkgdata_DATA = animate-alpha.png
