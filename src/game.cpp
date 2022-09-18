@@ -86,7 +86,8 @@ void Game::render()
 
 
   // Draw our texture
-  SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destRect);
+  //SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destRect);
+  SDL_RenderCopy(m_pRenderer, m_pTexture, 0, 0);
 
   // Show the window
   SDL_RenderPresent(m_pRenderer);
