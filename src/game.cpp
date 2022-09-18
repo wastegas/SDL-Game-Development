@@ -21,7 +21,8 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 	    {
 	      std::cout << "Rendrer creation success" << std::endl;
 
-	      SDL_Surface* pTempSurface = SDL_LoadBMP(DATADIR "/animate.bmp");
+	      SDL_Surface* pTempSurface =
+		IMG_Load(DATADIR "/animate-alpha.png");
 
 	      if(pTempSurface == nullptr)
 		{
@@ -64,7 +65,7 @@ void Game::render()
 {
 
   SDL_SetRenderDrawColor(m_pRenderer,
-		     0, 0, 0, 255);
+		     255, 0, 0, 255);
 
   m_destRect.w = m_sourceRect.w = 128;
   m_destRect.h = m_sourceRect.h = 82;
