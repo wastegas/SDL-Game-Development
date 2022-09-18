@@ -68,7 +68,7 @@ void Game::render()
 
   m_destRect.w = m_sourceRect.w = 128;
   m_destRect.h = m_sourceRect.h = 82;
-  m_destRect.x = m_sourceRect.x = 0;
+  m_destRect.x = 0;
   m_destRect.y = m_sourceRect.y = 0;
   
   
@@ -102,6 +102,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
+  m_sourceRect.x = 128 * int(((SDL_GetTicks() / 100) % 6));
 }
 
 void Game::clean()
