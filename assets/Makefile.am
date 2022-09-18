@@ -1,1 +1,1 @@
-pkgdata_DATA = rider.bmp
+pkgdata_DATA = animate.bmp
