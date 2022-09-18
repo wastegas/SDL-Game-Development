@@ -24,6 +24,10 @@ class Game
   
   bool          m_bRunning;
 
+  SDL_Texture* m_pTexture;
+  SDL_Rect m_sourceRect;
+  SDL_Rect m_destRect;
+
 };
 
 

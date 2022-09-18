@@ -20,6 +20,20 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 	  if (m_pRenderer != 0)
 	    {
 	      std::cout << "Rendrer creation success" << std::endl;
+
+	      SDL_Surface* pTempSurface = SDL_LoadBMP(DATADIR "/rider.bmp");
+
+	      if(pTempSurface == nullptr)
+		{
+		  std::cerr << "unable to load rider.bmp "
+			    << SDL_GetError() << std::endl;
+		  return false;
+		}
+	      m_pTexture = SDL_CreateTextureFromSurface(
+							m_pRenderer,
+							pTempSurface);
+	      SDL_FreeSurface(pTempSurface);
+	      
 	    }
 	  else
 	    {
@@ -50,10 +64,23 @@ void Game::render()
 {
 
   SDL_SetRenderDrawColor(m_pRenderer,
-		     255, 255, 255, 255);
+		     0, 0, 0, 255);
+
+  // get dimensions of our texture
+  SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRect.w,
+		   &m_sourceRect.h);
+
+  m_destRect.x = m_sourceRect.x = 0;
+  m_destRect.y = m_sourceRect.y = 0;
+  m_destRect.w = m_sourceRect.w;
+  m_destRect.h = m_sourceRect.h;
 
   // clear the window
   SDL_RenderClear(m_pRenderer);
+
+
+  // Draw our texture
+  SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destRect);
 
   // Show the window
   SDL_RenderPresent(m_pRenderer);
@@ -86,4 +113,5 @@ void Game::clean()
   SDL_DestroyRenderer(m_pRenderer);
   SDL_Quit();
 }
+
 
