@@ -21,5 +21,6 @@ PKG_CHECK_MODULES(SDL2_TTF, [SDL2_ttf])
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
-                 src/Makefile])
+                 src/Makefile
+		 assets/Makefile])
 AC_OUTPUT
