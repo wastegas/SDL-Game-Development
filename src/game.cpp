@@ -78,7 +78,10 @@ void Game::render()
 
 
   // Draw our texture
-  SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destRect);
+  //SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destRect);
+  // flip the image horizontally
+  SDL_RenderCopyEx(m_pRenderer, m_pTexture,
+		   &m_sourceRect, &m_destRect, 0, 0, SDL_FLIP_HORIZONTAL);
 
   // Show the window
   SDL_RenderPresent(m_pRenderer);
