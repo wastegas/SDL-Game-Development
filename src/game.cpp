@@ -21,19 +21,8 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 	    {
 	      std::cout << "Rendrer creation success" << std::endl;
 
-	      SDL_Surface* pTempSurface =
-		IMG_Load(DATADIR "/animate-alpha.png");
-
-	      if(pTempSurface == nullptr)
-		{
-		  std::cerr << "unable to load image:  "
-			    << SDL_GetError() << std::endl;
-		  return false;
-		}
-	      m_pTexture = SDL_CreateTextureFromSurface(
-							m_pRenderer,
-							pTempSurface);
-	      SDL_FreeSurface(pTempSurface);
+	      m_textureManager.load(DATADIR "/animate-alpha.png",
+				    "animate", m_pRenderer);
 	      
 	    }
 	  else
@@ -67,22 +56,14 @@ void Game::render()
   SDL_SetRenderDrawColor(m_pRenderer,
 		     255, 0, 0, 255);
 
-  m_destRect.w = m_sourceRect.w = 128;
-  m_destRect.h = m_sourceRect.h = 82;
-  m_destRect.x = 0;
-  m_destRect.y = m_sourceRect.y = 0;
-  
-  
-
   // clear the window
   SDL_RenderClear(m_pRenderer);
 
+  m_textureManager.draw("animate", 0, 0, 128, 82,
+			m_pRenderer);
+  m_textureManager.drawFrame("animate", 100, 100, 128, 82,
+			     1, m_currentFrame, m_pRenderer);
 
-  // Draw our texture
-  //SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destRect);
-  // flip the image horizontally
-  SDL_RenderCopyEx(m_pRenderer, m_pTexture,
-		   &m_sourceRect, &m_destRect, 0, 0, SDL_FLIP_HORIZONTAL);
 
   // Show the window
   SDL_RenderPresent(m_pRenderer);
@@ -106,7 +87,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
-  m_sourceRect.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+  m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
 }
 
 void Game::clean()
