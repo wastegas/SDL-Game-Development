@@ -76,6 +76,8 @@ void Game::render()
   m_destRect.y = m_sourceRect.y = 0;
   m_destRect.w = m_sourceRect.w;
   m_destRect.h = m_sourceRect.h;
+  m_destRect.x = 100;
+  m_destRect.y = 100;
 
   // clear the window
   SDL_RenderClear(m_pRenderer);
