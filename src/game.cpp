@@ -21,11 +21,11 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 	    {
 	      std::cout << "Rendrer creation success" << std::endl;
 
-	      SDL_Surface* pTempSurface = SDL_LoadBMP(DATADIR "/rider.bmp");
+	      SDL_Surface* pTempSurface = SDL_LoadBMP(DATADIR "/animate.bmp");
 
 	      if(pTempSurface == nullptr)
 		{
-		  std::cerr << "unable to load rider.bmp "
+		  std::cerr << "unable to load image:  "
 			    << SDL_GetError() << std::endl;
 		  return false;
 		}
@@ -66,28 +66,19 @@ void Game::render()
   SDL_SetRenderDrawColor(m_pRenderer,
 		     0, 0, 0, 255);
 
-  // get dimensions of our texture
-  SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRect.w,
-		   &m_sourceRect.h);
-
-  m_sourceRect.w = 50;
-  m_sourceRect.h = 50;
+  m_destRect.w = m_sourceRect.w = 128;
+  m_destRect.h = m_sourceRect.h = 82;
   m_destRect.x = m_sourceRect.x = 0;
   m_destRect.y = m_sourceRect.y = 0;
-  m_destRect.w = m_sourceRect.w;
-  m_destRect.h = m_sourceRect.h;
-  m_destRect.x = 100;
-  m_destRect.y = 100;
-  m_sourceRect.x = 50;
-  m_sourceRect.y = 50;
+  
+  
 
   // clear the window
   SDL_RenderClear(m_pRenderer);
 
 
   // Draw our texture
-  //SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destRect);
-  SDL_RenderCopy(m_pRenderer, m_pTexture, 0, 0);
+  SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRect, &m_destRect);
 
   // Show the window
   SDL_RenderPresent(m_pRenderer);
