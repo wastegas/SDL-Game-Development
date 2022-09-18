@@ -70,6 +70,8 @@ void Game::render()
   SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRect.w,
 		   &m_sourceRect.h);
 
+  m_sourceRect.w = 50;
+  m_sourceRect.h = 50;
   m_destRect.x = m_sourceRect.x = 0;
   m_destRect.y = m_sourceRect.y = 0;
   m_destRect.w = m_sourceRect.w;
