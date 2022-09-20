@@ -6,7 +6,10 @@
 #include "texturemanager.h"
 #include "gameobject.h"
 #include "player.h"
+#include "enemy.h"
 #include <iostream>
+#include <vector>
+#include <config.h>
 
 class Game
 {
@@ -28,10 +31,14 @@ class Game
   
   bool          m_bRunning;
 
-  int m_currentFrame;
+  int           m_currentFrame;
 
-  GameObject m_go;
-  Player m_player;
+  GameObject*   m_go;
+  GameObject*   m_player;
+  GameObject*   m_enemy;
+  
+
+  std::vector<GameObject*> m_gameObjects;
 
 };
 
