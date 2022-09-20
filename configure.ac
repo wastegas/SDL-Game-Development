@@ -8,7 +8,10 @@ AC_CONFIG_SRCDIR([src/main.cpp])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
+AC_LANG(C++)
 AC_PROG_CXX
+m4_include([m4/m4_ax_cxx_compile_stdcxx.m4])
+AX_CXX_COMPILE_STDCXX(14)
 
 # Checks for libraries.
 PKG_CHECK_MODULES(SDL2, [sdl2])
