@@ -4,6 +4,7 @@ sdl_oop_SOURCES = \
 	texturemanager.cpp \
 	gameobject.cpp \
 	player.cpp \
+	enemy.cpp \
 	main.cpp
 
 
