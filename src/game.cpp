@@ -6,7 +6,6 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 {
   if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {
-      std::cout << "SDL init success" << std::endl;
       m_pWindow = SDL_CreateWindow(title,
 				   xpos,
 				   ypos,
@@ -15,11 +14,9 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 
       if (m_pWindow != 0)
 	{
-	  std::cout << "Window creation success" << std::endl;
 	  m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 	  if (m_pRenderer != 0)
 	    {
-	      std::cout << "Rendrer creation success" << std::endl;
 	      if(!TextureManager::Instance()->load(DATADIR "/animate-alpha.png",
 						 "animate", m_pRenderer))
 		{
@@ -50,7 +47,6 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
       return false; 
     }
 
-  std::cout << "init success" << std::endl;
   m_bRunning = true;
   return true;
 }
@@ -97,7 +93,6 @@ void Game::update()
 
 void Game::clean()
 {
-  std::cout << "Cleaning game..." << std::endl;
   SDL_DestroyWindow(m_pWindow);
   SDL_DestroyRenderer(m_pRenderer);
   SDL_Quit();
