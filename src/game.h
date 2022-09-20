@@ -4,6 +4,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "texturemanager.h"
+#include "gameobject.h"
+#include "player.h"
 #include <iostream>
 
 class Game
@@ -28,7 +30,12 @@ class Game
 
   int m_currentFrame;
 
+  GameObject m_go;
+  Player m_player;
+
 };
+
+
 
 
 #endif // __GAME_H__
