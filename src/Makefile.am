@@ -2,6 +2,8 @@ bin_PROGRAMS = sdl_draw
 sdl_draw_SOURCES = \
 	game.cpp \
 	texturemanager.cpp \
+	gameobject.cpp \
+	player.cpp \
 	main.cpp
 
 
