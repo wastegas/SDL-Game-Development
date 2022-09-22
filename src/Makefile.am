@@ -2,7 +2,9 @@ bin_PROGRAMS = sdl_oop
 sdl_oop_SOURCES = \
 	game.cpp \
 	texturemanager.cpp \
-	gameobject.cpp \
+	loaderparams.h \
+	gameobject.h \
+	sdlgameobject.cpp \
 	player.cpp \
 	enemy.cpp \
 	main.cpp
