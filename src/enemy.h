@@ -2,16 +2,17 @@
 #define __ENEMY_H__
 
 #include <string>
-#include "gameobject.h"
+#include "sdlgameobject.h"
 #include <config.h>
 
-class Enemy : public GameObject
+class Enemy : public SDLGameObject
 {
  public:
-  void load(int, int, int, int, std::string);
-  void draw(SDL_Renderer*);
-  void update();
-  void clean();
+  Enemy(const LoaderParams* pParams);
+
+  virtual void draw();
+  virtual void update();
+  virtual void clean();
 };
 
 #endif // __ENEMY_H__
