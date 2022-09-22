@@ -1,6 +1,7 @@
 #include "gameobject.h"
 #include <config.h>
 
+
 void GameObject::draw(SDL_Renderer* pRenderer)
 {
   TextureManager::Instance()->drawFrame(m_textureID, m_x, m_y,

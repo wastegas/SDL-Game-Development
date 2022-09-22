@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <iostream>
 #include <string>
-//#include "texturemanager.h"
+#include "vector2d.h"
 #include "loaderparams.h"
 
 class GameObject
@@ -15,8 +15,9 @@ class GameObject
   virtual void clean() = 0;
 
  protected:
-  GameObject(const LoaderParams* pParams){}
+    GameObject(const LoaderParams* pParams){}
   virtual ~GameObject() {}
+
 };
 
 #endif // __GAMEOBECT_H__
