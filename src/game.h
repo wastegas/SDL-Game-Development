@@ -3,10 +3,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
-#include "texturemanager.h"
 #include "gameobject.h"
-#include "player.h"
-#include "enemy.h"
 #include <iostream>
 #include <vector>
 #include <config.h>
@@ -14,9 +11,6 @@
 class Game
 {
  public:
-  Game() {}
-  ~Game() {}
-
   bool init(const char* title, int xpos, int ypos, int height, int width,
 	    int flag);
   void update();
@@ -24,8 +18,20 @@ class Game
   void handleEvents();
   void clean();
   bool running() { return m_bRunning; }
+  SDL_Renderer* getRenderer() const { return m_pRenderer; }
+
+  static Game* Instance()
+  {
+    if (s_pInstance == 0)
+      {
+	s_pInstance = new Game();
+        return s_pInstance;
+      }
+    return s_pInstance;
+  }
 
  private:
+  Game() {}
   SDL_Window*   m_pWindow;
   SDL_Renderer* m_pRenderer;
   
@@ -36,13 +42,15 @@ class Game
   GameObject*   m_go;
   GameObject*   m_player;
   GameObject*   m_enemy;
+
+  static Game* s_pInstance;
   
 
   std::vector<GameObject*> m_gameObjects;
 
 };
 
-
+typedef Game TheGame;
 
 
 #endif // __GAME_H__
