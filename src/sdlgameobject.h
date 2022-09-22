@@ -18,6 +18,7 @@ class SDLGameObject : public GameObject
 
  protected:
   Vector2D m_position;
+  Vector2D m_velocity;
   
   int m_width;
   int m_height;
