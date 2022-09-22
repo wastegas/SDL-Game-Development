@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include "loaderparams.h"
 #include <string>
 #include <iostream>
 #include <map>
