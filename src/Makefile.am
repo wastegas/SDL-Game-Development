@@ -3,6 +3,7 @@ sdl_input_SOURCES = \
 	game.cpp \
 	texturemanager.cpp \
 	loaderparams.h \
+	vector2d.cpp \
 	gameobject.h \
 	sdlgameobject.cpp \
 	player.cpp \
