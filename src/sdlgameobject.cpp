@@ -5,7 +5,7 @@
 SDLGameObject::SDLGameObject(const LoaderParams* pParams) :
   GameObject(pParams), m_position(pParams->getX(),
 				  pParams->getY()),
-  m_velocity(0, 0)
+  m_velocity(0, 0), m_acceleration(0, 0)
 {
   m_width = pParams->getWidth();
   m_height = pParams->getHeight();
@@ -26,6 +26,7 @@ void SDLGameObject::draw()
 
 void SDLGameObject::update()
 {
+  m_velocity += m_acceleration;
   m_position += m_velocity;
 }
 
