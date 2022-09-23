@@ -2,6 +2,7 @@
 #include "player.h"
 #include "enemy.h"
 #include "texturemanager.h"
+#include "inputhandler.h"
 
 #include <config.h>
 
@@ -23,11 +24,12 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 	  m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 	  if (m_pRenderer != 0)
 	    {
-	      if(!TextureManager::Instance()->load(DATADIR "/animate-alpha.png",
+	      if(!TheTextureManager::Instance()->load(DATADIR "/animate-alpha.png",
 						 "animate", m_pRenderer))
 		{
 		  return false;
 		}
+	      TheInputHandler::Instance()->initialiseJoysticks();
 	      
 	      m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
 	      m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
@@ -80,18 +82,7 @@ void Game::render()
 
 void Game::handleEvents()
 {
-  SDL_Event e;
-  if (SDL_PollEvent(&e))
-    {
-      switch (e.type)
-	{
-	case SDL_QUIT:
-	  m_bRunning = false;
-	  break;
-	default:
-	  break;
-	}
-    }
+  TheInputHandler::Instance()->update();
 }
 
 void Game::update()
@@ -107,9 +98,14 @@ void Game::update()
 
 void Game::clean()
 {
+  TheInputHandler::Instance()->clean();
   SDL_DestroyWindow(m_pWindow);
   SDL_DestroyRenderer(m_pRenderer);
   SDL_Quit();
 }
 
 
+void Game::quit()
+{
+  m_bRunning = false;
+}
