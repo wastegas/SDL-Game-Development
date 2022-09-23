@@ -1,5 +1,7 @@
 bin_PROGRAMS = sdl_input
 sdl_input_SOURCES = \
+	main.cpp \
+	inputhandler.cpp \
 	game.cpp \
 	texturemanager.cpp \
 	loaderparams.h \
@@ -7,8 +9,8 @@ sdl_input_SOURCES = \
 	gameobject.h \
 	sdlgameobject.cpp \
 	player.cpp \
-	enemy.cpp \
-	main.cpp
+	enemy.cpp 
+
 
 
 sdl_input_CPPFLAGS = $(SDL2_CFLAGS) $(SDL2_TTF_CFLAGS) -DDATADIR=\"$(pkgdatadir)\"
