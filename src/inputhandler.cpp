@@ -9,6 +9,7 @@ InputHandler::InputHandler()
 
 void InputHandler::initialiseJoysticks()
 {
+  // joystick 
   if (SDL_WasInit(SDL_INIT_JOYSTICK) == 0)
     {
       SDL_InitSubSystem(SDL_INIT_JOYSTICK);
@@ -45,11 +46,22 @@ void InputHandler::initialiseJoysticks()
       m_bJoysticksInitialised = true;
 
       std::cout << "Initialised " << m_joysticks.size() << "joystick(s)\n";
+
+
+      
     }
   else
     {
       m_bJoysticksInitialised = false;
     }
+
+  // end joystick
+  // mouse
+  for (int i = 0; i < MOUSE_BUTTON_TOTAL; i++)
+    {
+      m_mouseButtonStates.push_back(false);
+    }
+  // end mouse
 }
 
 void InputHandler::clean()
@@ -161,6 +173,44 @@ void InputHandler::update()
 	    
 	    break;
 	  }
+	case SDL_MOUSEBUTTONDOWN:
+	  {
+	    if (event.button.button == SDL_BUTTON_LEFT)
+	      {
+		m_mouseButtonStates[LEFT] = true;
+	      }
+	    if (event.button.button == SDL_BUTTON_MIDDLE)
+	      {
+		m_mousebuttonStates[MIDDLE] = true;
+	      }
+	    if (event.button.button == SDL_BUTTON_RIGHT)
+	      {
+		m_mouseButtonStates[RIGHT] = true;
+	      }
+	    break;
+	  }
+	case SDL_MOUSEBUTONUP:
+	  {
+	    if (event.button.button == SDL_BUTTON_LEFT)
+	      {
+		m_mouseButtonStates[LEFT] = false;
+	      }
+	    if (event.button.button == SDL_BUTTON_MIDDLE)
+	      {
+		m_mouseButtonStates[MIDDLE] = false;
+	      }
+	    if (event.button.button == SDL_BUTTON_RIGHT)
+	      {
+		m_mouseButtonStates[RIGHT] = false;
+	      }
+	    break;
+	  }
+	case SDL_MOUSEMOTION:
+	  {
+	    m_mousePosition->setX(event.motion.x);
+	    m_mousePosition->setY(event.motion.y);
+	    break;
+	  }
 	default:
 	  break;
 	} //switch
@@ -203,4 +253,14 @@ int InputHandler::yvalue(int joy, int stick)
 bool InputHandler::getButtonState(int joy, int buttonNumber)
 {
   return m_buttonStates[joy][buttonNumber];
+}
+
+bool InputHandler::getMouseButtonState(int buttonNumber)
+{
+  return m_mouseButtonStates[buttonNumber];
+}
+
+Vector2D* InputHandler::getMousePosition()
+{
+  return m_mousePosition;
 }
