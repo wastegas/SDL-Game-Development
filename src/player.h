@@ -2,7 +2,7 @@
 #define __PLAYER_H__
 
 #include <iostream>
-//#include "gameobject.h"
+#include "inputhandler.h"
 #include "sdlgameobject.h"
 
 class Player : public SDLGameObject
@@ -13,6 +13,9 @@ class Player : public SDLGameObject
   virtual void draw();
   virtual void update();
   virtual void clean();
+
+private:
+  void handleInput();
 
 };
 
