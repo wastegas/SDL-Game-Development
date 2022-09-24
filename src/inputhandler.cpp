@@ -26,6 +26,14 @@ void InputHandler::initialiseJoysticks()
 	      m_joystickValues.push_back(std::make_pair(new
 					 Vector2D(0, 0), new
 							Vector2D(0, 0)));
+
+	      std::<vector<bool>> tempButtons;
+
+	      for (int j = 0; j < SDL_JoyStickNumButtons(joy); j++)
+		{
+		  tempButtons.push_back(false);
+		}
+	      m_buttonStates.push_back(tempButtons);
 	      
 	    }
 	  else
@@ -137,6 +145,22 @@ void InputHandler::update()
 	      }
 	    break;
 	  }
+	case SDL_JOYBUTTONDOWN:
+	  {
+	    int whichOne = event.jaxis.which;
+
+	    m_buttonStates[whichOne][event.jbutton.button] = true;
+	    
+	    break;
+	  }
+	case SDL_JOYBUTTONUP:
+	  {
+	    int whichOne = event.jaxis.which;
+
+	    m_buttonStates[whichOne][event.jbutton.button] = false;
+	    
+	    break;
+	  }
 	default:
 	  break;
 	} //switch
@@ -174,4 +198,9 @@ int InputHandler::yvalue(int joy, int stick)
 	}
     }
   return 0;
+}
+
+bool InputHandler::getButtonState(int joy, int buttonNumber)
+{
+  return m_buttonStates[joy][buttonNumber];
 }
