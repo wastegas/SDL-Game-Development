@@ -54,8 +54,14 @@ void Player::handleInput()
 	  m_velocity.setY(1 * TheInputHandler::Instance()->yvalue(0, 2));
 	}
     }
-  // Button
+  // joystick button
   if (TheInputHandler::Instance()->getButtonState(0, 3))
+    {
+      m_velocity.setX(1);
+    }
+
+  // mouse button
+  if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
     {
       m_velocity.setX(1);
     }

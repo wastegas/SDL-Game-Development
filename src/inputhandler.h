@@ -10,6 +10,14 @@
 class InputHandler
 {
  public:
+  enum mouse_buttons
+    {
+      LEFT = 0,
+      MIDDLE = 1,
+      RIGHT = 2,
+      MOUSE_BUTTON_TOTAL = 3
+    };
+  
   // joystick functions
   void initialiseJoysticks();
   bool joysticksInitialised() { return m_bJoysticksInitialised; }
@@ -17,6 +25,11 @@ class InputHandler
   int  yvalue(int joy, int stick);
   bool getButtonState(int joy, int buttonNumber);
   // end joystick
+
+  // mouse functions
+  bool getMouseButtonState(int buttonNumber);
+  Vector2D* getMousePosition();
+  // end mouse
   
   
   static InputHandler* Instance()
@@ -41,7 +54,12 @@ class InputHandler
   const int m_joystickDeadZone = 10000;
   std::vector<std::vector<bool>> m_buttonStates;
   bool m_bJoysticksInitialised;
-  // end joystick 
+  // end joystick
+
+  // mouse
+  std::vector<bool> m_mouseButtonStates;
+  Vector2D* m_mousePosition;
+  // end mouse
 
 };
 
