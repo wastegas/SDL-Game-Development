@@ -13,7 +13,7 @@ void Player::draw()
 void Player::update()
 {
 
-  m_velocity.setX(0);
+  //  m_velocity.setX(0);
   m_velocity.setY(0);
 
   handleInput();
@@ -65,4 +65,6 @@ void Player::handleInput()
     {
       m_velocity.setX(1);
     }
+  Velocity2D * vec = TheInputHandler::Instance()->getMousePosition();
+  m_velocity = (*vec - m_position) / 100;
 }
