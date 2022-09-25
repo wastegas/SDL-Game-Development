@@ -5,7 +5,7 @@
 #include <vector>
 #include <pair>
 #include <iostream>
-
+#include <cstdint>
 
 class InputHandler
 {
@@ -30,6 +30,10 @@ class InputHandler
   bool getMouseButtonState(int buttonNumber);
   Vector2D* getMousePosition();
   // end mouse
+
+  // keyboard functions
+  bool isKeyDown(SDL_Scancode key);
+  // end keyboard
   
   
   static InputHandler* Instance()
@@ -60,6 +64,10 @@ class InputHandler
   std::vector<bool> m_mouseButtonStates;
   Vector2D* m_mousePosition;
   // end mouse
+
+  // keyboard
+  Uint8_t* m_keystate;
+  // end keyboard
 
 };
 
