@@ -58,15 +58,23 @@ class InputHandler
   const int m_joystickDeadZone = 10000;
   std::vector<std::vector<bool>> m_buttonStates;
   bool m_bJoysticksInitialised;
+  void onJoyStickAxisMove(SDL_Event& event);
+  void onJoyStickButtonDown(SDL_Event& event);
+  void onJoyStickButtonUp(SDL_Event& event);
   // end joystick
 
   // mouse
   std::vector<bool> m_mouseButtonStates;
   Vector2D* m_mousePosition;
+  void onMouseMove(SDL_Event& event);
+  void onMouseButtonDown(SDL_Event& event);
+  void onMouseButtonUp(SDL_Event& event);
   // end mouse
 
   // keyboard
   Uint8_t* m_keystate;
+  void onKeyDown();
+  void onKeyUp();
   // end keyboard
 
 };
