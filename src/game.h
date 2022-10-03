@@ -4,6 +4,9 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "gameobject.h"
+#include "gamestatemachine.h"
+#include "playstate.h"
+#include "menustate.h"
 #include <iostream>
 #include <vector>
 #include <config.h>
@@ -48,6 +51,8 @@ class Game
   
 
   std::vector<GameObject*> m_gameObjects;
+
+  GameStateMachine* m_pGameStateMachine;
 
 };
 

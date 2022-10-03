@@ -29,6 +29,10 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 		{
 		  return false;
 		}
+
+	      m_pGameStateMachine = new GameStateMachine();
+	      m_pGameStateMachine->changeState(new MenuState());
+	      
 	      TheInputHandler::Instance()->initialiseJoysticks();
 	      
 	      m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
@@ -83,6 +87,11 @@ void Game::render()
 void Game::handleEvents()
 {
   TheInputHandler::Instance()->update();
+
+  if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+    {
+      m_pGameStateMachine->changeState(new PlayState());
+    }
 }
 
 void Game::update()
