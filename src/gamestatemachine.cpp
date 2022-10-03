@@ -20,7 +20,7 @@ void GameStateMachine::popState()
 
 void GameStateMachine::changeState(GameState* pState)
 {
-  if (m_gameStates.empty())
+  if (!m_gameStates.empty())
     {
       if(m_gameStates.back()->getStateID() == pState->getStateID())
 	{
