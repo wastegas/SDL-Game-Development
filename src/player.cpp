@@ -55,18 +55,19 @@ void Player::handleInput()
 	}
     }
   // joystick button
+  /* crashes without a joystick
   if (TheInputHandler::Instance()->getButtonState(0, 3))
     {
       m_velocity.setX(1);
     }
-
+  */
   // mouse button
   if (TheInputHandler::Instance()->getMouseButtonState(TheInputHandler::LEFT))
     {
       m_velocity.setX(1);
     }
-  Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
-  m_velocity = (*vec - m_position) / 100;
+  //Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
+  //m_velocity = (*vec - m_position) / 100;
 
   // keyboard
   if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
