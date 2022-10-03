@@ -36,7 +36,7 @@ void Player::handleInput()
       if (TheInputHandler::Instance()->xvalue(0, 1) > 0 ||
 	  TheInputHandler::Instance()->xvalue(0, 1) < 0)
 	{
-	  m_volicity.setX(1 * TheInputHandler::Instance->xvalue(0, 1));
+	  m_velocity.setX(1 * TheInputHandler::Instance()->xvalue(0, 1));
 	}
       if (TheInputHandler::Instance()->yvalue(0, 1) > 0 ||
 	  TheInputHandler::Instance()->yvalue(0, 1) < 0)
@@ -61,11 +61,11 @@ void Player::handleInput()
     }
 
   // mouse button
-  if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
+  if (TheInputHandler::Instance()->getMouseButtonState(TheInputHandler::LEFT))
     {
       m_velocity.setX(1);
     }
-  Velocity2D * vec = TheInputHandler::Instance()->getMousePosition();
+  Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
   m_velocity = (*vec - m_position) / 100;
 
   // keyboard
