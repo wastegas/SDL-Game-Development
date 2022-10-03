@@ -1,6 +1,9 @@
 #ifndef __PLAYSTATE_H__
 #define __PLAYSTATE_H__
 
+#include "gamestate.h"
+#include <string>
+
 class PlayState : public GameState
 {
  public:
