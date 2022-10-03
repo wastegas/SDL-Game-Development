@@ -3,9 +3,10 @@
 
 #include <SDL.h>
 #include <vector>
-#include <pair>
+#include <utility>
 #include <iostream>
 #include <cstdint>
+#include "vector2d.h"
 
 class InputHandler
 {
@@ -21,7 +22,7 @@ class InputHandler
   // joystick functions
   void initialiseJoysticks();
   bool joysticksInitialised() { return m_bJoysticksInitialised; }
-  int  xvlaue(int joy, int stick);
+  int  xvalue(int joy, int stick);
   int  yvalue(int joy, int stick);
   bool getButtonState(int joy, int buttonNumber);
   // end joystick
@@ -54,13 +55,13 @@ class InputHandler
 
   // joystick members
   std::vector<SDL_Joystick*> m_joysticks;
-  std::vector<std::pair<Vector2D*, Vectror2D*> m_joystickValues;
+  std::vector<std::pair<Vector2D*, Vector2D*>> m_joystickValues;
   const int m_joystickDeadZone = 10000;
   std::vector<std::vector<bool>> m_buttonStates;
   bool m_bJoysticksInitialised;
-  void onJoyStickAxisMove(SDL_Event& event);
-  void onJoyStickButtonDown(SDL_Event& event);
-  void onJoyStickButtonUp(SDL_Event& event);
+  void onJoystickAxisMove(SDL_Event& event);
+  void onJoystickButtonDown(SDL_Event& event);
+  void onJoystickButtonUp(SDL_Event& event);
   // end joystick
 
   // mouse
@@ -72,7 +73,7 @@ class InputHandler
   // end mouse
 
   // keyboard
-  Uint8_t* m_keystate;
+  const Uint8* m_keystate;
   void onKeyDown();
   void onKeyUp();
   // end keyboard
