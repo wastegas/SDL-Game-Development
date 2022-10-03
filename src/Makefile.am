@@ -9,6 +9,10 @@ sdl_input_SOURCES = \
 	gameobject.h \
 	sdlgameobject.cpp \
 	player.cpp \
+	gamestate.h \
+	gamestatemachine.cpp \
+	playstate.cpp \
+	menustate.cpp \
 	enemy.cpp 
 
 
