@@ -27,7 +27,7 @@ void GameStateMachine::changeState(GameState* pState)
 	  return; // do nothing
 	}
 
-      if (m_gatemStates.back()->onExit())
+      if (m_gameStates.back()->onExit())
 	{
 	  m_gameStates.pop_back();
 	}
