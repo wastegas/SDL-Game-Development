@@ -73,12 +73,7 @@ void Game::render()
   // clear the window
   SDL_RenderClear(m_pRenderer);
 
-  for (auto it = m_gameObjects.begin();
-       it != m_gameObjects.end(); it++)
-    {
-      (*it)->draw();
-    }
-
+  m_pGameStateMachine->render();
 
   // Show the window
   SDL_RenderPresent(m_pRenderer);
@@ -96,13 +91,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
-  m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
-
-  for ( auto it = m_gameObjects.begin(); it != m_gameObjects.end();
-	it++)
-    {
-      (*it)->update();
-    }
+  m_pGameStateMachine->update();
 }
 
 void Game::clean()
