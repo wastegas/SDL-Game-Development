@@ -1,7 +1,12 @@
 #ifndef __MENUSTATE_H__
 #define __MENUSTATE_H__
 
+#include "game.h"
 #include "gamestate.h"
+#include "gameobject.h"
+#include "texturemanager.h"
+#include "menubutton.h"
+#include <vector>
 
 class MenuState : public GameState
 {
@@ -16,6 +21,7 @@ class MenuState : public GameState
 
  private:
   static const std::string s_menuID;
+  std::vector<GameObject*> m_gameObjects;
 };
 
 #endif // __MENUSTATE_H__
