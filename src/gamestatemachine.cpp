@@ -44,7 +44,7 @@ void GameStateMachine::update()
 {
   if (!m_gameStates.empty())
     {
-      m_gateStates.back()->update();
+      m_gameStates.back()->update();
     }
 }
 
