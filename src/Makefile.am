@@ -13,6 +13,7 @@ sdl_states_SOURCES = \
 	gamestatemachine.cpp \
 	playstate.cpp \
 	menustate.cpp \
+	menubutton.cpp \
 	enemy.cpp 
 
 
