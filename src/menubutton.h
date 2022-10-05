@@ -1,6 +1,7 @@
 #ifndef __MENUBUTTON_H__
 #define __MENUBUTTON_H__
 
+#include <iostream>
 #include "inputhandler.h"
 #include "sdlgameobject.h"
 
