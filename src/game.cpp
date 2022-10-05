@@ -24,6 +24,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 	  m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 	  if (m_pRenderer != 0)
 	    {
+
 	      if(!TheTextureManager::Instance()->load(DATADIR "/animate-alpha.png",
 						 "animate", m_pRenderer))
 		{
@@ -35,8 +36,8 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 	      
 	      TheInputHandler::Instance()->initialiseJoysticks();
 	      
-	      m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
-	      m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
+	      //m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+	      //m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
 
 	      
 	    }
