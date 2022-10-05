@@ -17,13 +17,13 @@ void MenuButton::update()
   Vector2D* pMousePos = TheInputHandler::Instance()->getMousePosition();
 
   if (pMousePos->getX() < (m_position.getX() + m_width)
-      && pMousePos->getX() > m_Position.getX()
+      && pMousePos->getX() > m_position.getX()
       && pMousePos->getY() < (m_position.getY() + m_height)
       && pMousePos->getY() > m_position.getY())
     {
       m_currentFrame = MOUSE_OVER;
 
-      if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
+      if (TheInputHandler::Instance()->getMouseButtonState(InputHandler::LEFT))
 	{
 	  m_currentFrame = CLICKED;
 	}
@@ -34,7 +34,7 @@ void MenuButton::update()
     }
 }
 
-void MouseButton::clean()
+void MenuButton::clean()
 {
   SDLGameObject::clean();
 }
