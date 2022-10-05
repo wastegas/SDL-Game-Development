@@ -1,9 +1,9 @@
 #ifndef __SDLGAMEOBJECT_H__
 #define __SDLGAMEOBJECT_H__
 
-#include "game.h"
+//#include "game.h"
 #include "loaderparams.h"
-#include "texturemanager.h"
+//#include "texturemanager.h"
 #include "gameobject.h"
 #include "vector2d.h"
 
