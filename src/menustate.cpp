@@ -17,6 +17,7 @@ void MenuState::render()
   for (auto it = m_gameObjects.begin();
        it != m_gameObjects.end(); it++)
     {
+      std::cout << "drawing the buttons" << std::endl;
       (*it)->draw();
     }
 }
@@ -27,12 +28,14 @@ bool MenuState::onEnter()
 					   "playbutton",
 					   TheGame::Instance()->getRenderer()))
     {
+      std::cout << "unable to load " << SDL_GetError() << std::endl;
       return false;
     }
   if (!TheTextureManager::Instance()->load(DATADIR "/exit.png",
 					   "exitbutton",
 					   TheGame::Instance()->getRenderer()))
     {
+      std::cout << "unable to load " << SDL_GetError() << std::endl;
       return false;
     }
   GameObject* button1 = new MenuButton(new LoaderParams(100, 100,
