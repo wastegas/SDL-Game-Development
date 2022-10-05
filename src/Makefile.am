@@ -8,12 +8,12 @@ sdl_states_SOURCES = \
 	vector2d.cpp \
 	gameobject.h \
 	sdlgameobject.cpp \
-	player.cpp \
+	menubutton.cpp \
+player.cpp \
 	gamestate.h \
 	gamestatemachine.cpp \
 	playstate.cpp \
 	menustate.cpp \
-	menubutton.cpp \
 	enemy.cpp 
 
 
