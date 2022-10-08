@@ -6,6 +6,11 @@ InputHandler* InputHandler::s_pInstance = 0;
 
 InputHandler::InputHandler()
 {
+  for (int i = 0; i < 3; ++i)
+    {
+      m_mouseButtonStates.push_back(false);
+    }
+  m_mousePosition = new Vector2D(0, 0);
 }
 
 void InputHandler::initialiseJoysticks()
@@ -80,7 +85,7 @@ void InputHandler::update()
 {
   SDL_Event event;
 
-  m_keystate = SDL_GetKeyboardState(NULL);
+  //  m_keystate = SDL_GetKeyboardState(NULL);
 
   while(SDL_PollEvent(&event))
     {
