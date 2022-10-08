@@ -68,8 +68,8 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width,
 void Game::render()
 {
 
-  SDL_SetRenderDrawColor(m_pRenderer,
-		     255, 0, 0, 255);
+  // SDL_SetRenderDrawColor(m_pRenderer,
+  //		     255, 0, 0, 255);
 
   // clear the window
   SDL_RenderClear(m_pRenderer);
