@@ -74,5 +74,5 @@ void MenuState::s_menuToPlay()
 
 void MenuState::s_exitFromMenu()
 {
-  std::cout << "Exit button clicked" << std::endl;
+  TheGame::Instance()->quit();
 }
