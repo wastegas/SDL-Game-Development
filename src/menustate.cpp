@@ -44,6 +44,9 @@ bool MenuState::onEnter()
   GameObject* button2 = new MenuButton(new LoaderParams(100, 300,
 							400, 100,
 							"exitbutton"));
+
+  m_gameObjects.push_back(button1);
+  m_gameObjects.push_back(button2);
   std::cout << "entering menustate" << std::endl;
   return true;
 }
