@@ -66,8 +66,13 @@ void Player::handleInput()
   //  {
   //    m_velocity.setX(1);
   //  }
-  Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
-  m_velocity = (*vec - m_position) / 100;
+
+  Vector2D* target = TheInputHandler::Instance()->getMousePosition();
+  m_velocity = *target - m_position;
+  m_velocity /= 50;
+    //
+    //Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
+    //m_velocity = (*vec - m_position) / 100;
 
   // mouse
   if (TheInputHandler::Instance()->getMouseButtonState(TheInputHandler::LEFT))
