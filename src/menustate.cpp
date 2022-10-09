@@ -5,6 +5,7 @@ const std::string MenuState::s_menuID = "MENU";
 
 void MenuState::update()
 {
+
   for (auto it = m_gameObjects.begin();
        it != m_gameObjects.end(); it++)
     {
@@ -69,7 +70,8 @@ bool MenuState::onExit()
 
 void MenuState::s_menuToPlay()
 {
-  std::cout << "Play button clicked" << std::endl;
+  std::cout << "play clicked" << std::endl;
+  TheGame::Instance()->getStateMachine()->changeState(new PlayState());
 }
 
 void MenuState::s_exitFromMenu()
