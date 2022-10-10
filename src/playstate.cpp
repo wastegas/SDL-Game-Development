@@ -43,6 +43,7 @@ bool PlayState::onExit()
 {
   for (auto it = m_gameObjects.begin(); it != m_gameObjects.end(); it++)
     {
+      std::cout << "cleaning player object" << std::endl;
       (*it)->clean();
     }
   m_gameObjects.clear();
