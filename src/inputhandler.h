@@ -30,6 +30,7 @@ class InputHandler
   // mouse functions
   bool getMouseButtonState(int buttonNumber);
   Vector2D* getMousePosition();
+  void reset(); // reset mousebutton states
   // end mouse
 
   // keyboard functions

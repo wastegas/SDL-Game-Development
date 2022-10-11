@@ -339,3 +339,12 @@ void InputHandler::onMouseMove(SDL_Event& event)
     m_mousePosition->setX(event.motion.x);
     m_mousePosition->setY(event.motion.y);  
 }
+
+void InputHandler::reset()
+{
+  for (auto it = m_mouseButtonStates.begin(); it != m_mouseButtonStates.end();
+       it++)
+    {
+      (*it) = false;
+    }
+}
