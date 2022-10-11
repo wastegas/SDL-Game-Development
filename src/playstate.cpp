@@ -5,6 +5,10 @@ const std::string PlayState::s_playID = "PLAY";
 
 void PlayState::update()
 {
+  if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+    {
+      TheGame::Instance()->getStateMachine()->pushState(new PauseState());
+    }
   for (auto it = m_gameObjects.begin(); it != m_gameObjects.end(); it++)
     {
       (*it)->update();

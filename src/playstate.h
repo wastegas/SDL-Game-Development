@@ -3,6 +3,7 @@
 
 #include "game.h"
 #include "gamestate.h"
+#include "pausestate.h"
 #include "gameobject.h"
 #include "texturemanager.h"
 #include "player.h"
