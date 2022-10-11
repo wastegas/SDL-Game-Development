@@ -9,11 +9,12 @@ sdl_states_SOURCES = \
 	gameobject.h \
 	sdlgameobject.cpp \
 	menubutton.cpp \
-player.cpp \
+	player.cpp \
 	gamestate.h \
 	gamestatemachine.cpp \
 	playstate.cpp \
 	menustate.cpp \
+	pausestate.cpp \
 	enemy.cpp 
 
 
