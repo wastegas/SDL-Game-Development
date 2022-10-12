@@ -34,9 +34,20 @@ bool PlayState::onEnter()
       return false;
     }
 
+  if (!TheTextureManager::Instance()->load(DATADIR "/helicopter2.png",
+					   "helicopter2",
+					   TheGame::Instance()->getRenderer()))
+    {
+      std::cout << "unable to load helicopter2.png" << std::endl;
+      return false;
+    }
+
   GameObject* player = new Player(new LoaderParams(100, 100, 128, 55,
 						   "helicopter"));
+  GameObject *enemy = new Enemy(new LoaderParams(100, 100, 128, 55,
+						 "helicopter2"));
   m_gameObjects.push_back(player);
+  m_gameObjects.push_back(enemy);
   
   std::cout << "entering playstate" << std::endl;
 						   

@@ -7,6 +7,7 @@
 #include "gameobject.h"
 #include "texturemanager.h"
 #include "player.h"
+#include "enemy.h"
 #include <string>
 #include <vector>
 
