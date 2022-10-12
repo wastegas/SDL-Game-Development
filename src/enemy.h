@@ -13,6 +13,8 @@ class Enemy : public SDLGameObject
   virtual void draw();
   virtual void update();
   virtual void clean();
+private:
+  int m_numFrames = 6;
 };
 
 #endif // __ENEMY_H__
